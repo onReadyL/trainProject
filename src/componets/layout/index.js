@@ -1,55 +1,28 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './index.module.scss';
-import utilStyles from '../../styles/utils.module.scss';
+import { Layout, Button } from 'antd';
 
-const name = 'LXB';
-export const siteTitle = 'Next.js Sample Website';
-
-export default function Layout({ children, home }) {
+const { Sider, Content, Footer, Header } = Layout;
+export default function Index({ children, home }) {
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
-                {home ? (
-                    <>
-                        <Image
-                            src="/images/profile.jpg"
-                            className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-                            alt={name}
-                            width={400}
-                            height={400}
-                        />
-                        <h1 className={utilStyles.heading2Xl}>{name}</h1>
-                    </>
-                ) : (
-                    <>
+        <Layout>
+            <Header>Header</Header>
+            <Layout>
+                <Sider>Silder</Sider>
+                <Layout>
+                    <Content>{children}</Content>
+                </Layout>
+            </Layout>
+            <Footer>
+                {!home && (
+                    <div className={styles.backToHome}>
+                        <Button>asa</Button>
                         <Link href="/" legacyBehavior>
-                            <a>
-                                <Image
-                                    src="/images/profile.jpg"
-                                    className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                                    alt={name}
-                                    width={400}
-                                    height={400}
-                                />
-                            </a>
+                            <a>← Back to home</a>
                         </Link>
-                        <h2 className={utilStyles.headingLg}>
-                            <Link href="/" legacyBehavior>
-                                <a className={utilStyles.colorInherit}>{name}</a>
-                            </Link>
-                        </h2>
-                    </>
+                    </div>
                 )}
-            </header>
-            <main>{children}</main>
-            {!home && (
-                <div className={styles.backToHome}>
-                    <Link href="/" legacyBehavior>
-                        <a>← Back to home</a>
-                    </Link>
-                </div>
-            )}
-        </div>
+            </Footer>
+        </Layout>
     );
 }
