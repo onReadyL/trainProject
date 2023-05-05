@@ -1,12 +1,15 @@
-import Head from 'next/head'
 import Link from 'next/link'
-import { Layout } from '../componets'
 import utilStyles from '../styles/utils.module.scss'
 import { getSortedPostsData } from '../../lib/posts';
 
+const config = {
+  home: true,
+  pageTitle: 'Home'
+}
+
 export default function Home({ allPostsData }: any) {
   return (
-    <Layout home title={'Home'}>
+    <>
       <section className={utilStyles.headingMd}>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -23,8 +26,11 @@ export default function Home({ allPostsData }: any) {
             </li>
           ))}
         </ul>
+        <h3>
+          <Link href={`/dashbord/overview`} legacyBehavior><a>{'overview'}</a></Link>
+        </h3>
       </section>
-    </Layout>
+    </>
   )
 }
 
@@ -32,8 +38,8 @@ export async function getStaticProps () {
   const allPostsData: any = getSortedPostsData();
   return {
     props: {
-      allPostsData
+      allPostsData,
+      ...config
     }
   }
-  
 }
