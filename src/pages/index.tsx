@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import utilStyles from '../styles/utils.module.scss'
+import Link from 'next/link';
+// import useSWR from 'swr'
+import utilStyles from '../styles/utils.module.scss';
 import { getSortedPostsData } from '../../lib/posts';
 
 const config = {
@@ -34,7 +35,7 @@ export default function Home({ allPostsData }: any) {
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   const allPostsData: any = getSortedPostsData();
   return {
     props: {
