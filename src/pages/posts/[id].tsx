@@ -32,6 +32,7 @@ export const getStaticProps = async ({ params }: { params?: { id: string }}) => 
         props: {
             postData,
             pageTitle: postData.id,
+            composition: 'blog',
         },
     };
 }

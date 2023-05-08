@@ -6,10 +6,10 @@ import type { AppProps } from 'next/app';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 
-import { AdminLayout } from '../componets/index'
+import { BlogLayout, Portal } from '../componets/index'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { pageTitle = 'undefined', home = false, ...restProps } = pageProps;
+  const { pageTitle = 'undefined', composition = 'index', ...restProps } = pageProps;
   return (
     <>
       <Head>
@@ -22,9 +22,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{pageTitle}</title>
       </Head>
       <ConfigProvider locale={zhCN}>
-        <AdminLayout home={home}>
-          <Component {...restProps} />
-        </AdminLayout>
+        {composition === 'portal' && (
+          <Portal />
+        )}
+        {composition === 'blog' && (
+          <BlogLayout>
+            <Component {...restProps} />
+          </BlogLayout>
+        )}
       </ConfigProvider>
     </>
   )
