@@ -7,11 +7,10 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import { Analytics } from '@vercel/analytics/react'
 
-import { BlogLayout, Portal } from '../componets/index'
-import { useEffect } from 'react';
+import { BlogLayout, Portal } from '../componets/index';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { pageTitle = 'undefined', composition = 'index', ...restProps } = pageProps;
+  const { pageTitle = 'undefined', composition = 'index', skills = [], ...restProps } = pageProps;
   return (
     <>
       <Head>
@@ -25,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ConfigProvider locale={zhCN}>
         {composition === 'portal' && (
-          <Portal />
+          <Portal skills={skills} />
         )}
         {composition === 'blog' && (
           <BlogLayout>

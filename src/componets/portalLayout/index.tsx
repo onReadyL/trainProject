@@ -1,20 +1,12 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Layout, Avatar, Tag, Card, Space } from 'antd';
+import { Layout, Avatar, Tag, Card } from 'antd';
 import Icon from '@ant-design/icons';
 
 import styles from './index.module.less';
-import { SKILLS_URL } from '@/componets/fetch/config';
 
-const Index = ({ children }: any) => {
+const Index = ({ children, skills }: any) => {
     const router = useRouter();
-    const [skills, setSkills] = useState([])
-    useEffect(() => {
-        fetch(SKILLS_URL).then(res => res.json()).then(res => {
-            setSkills(res);
-        })
-    }, [])
     const linkTo = () => {
         router.push('/blog');
     }

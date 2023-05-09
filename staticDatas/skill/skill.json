@@ -1,4 +1,4 @@
-const skills: any = [
+[
     {
         "skill": "React",
         "bgColor": "magenta"
@@ -35,5 +35,4 @@ const skills: any = [
         "skill": "Jest",
         "bgColor": "blue"
     }
-];
-export default skills;
+]

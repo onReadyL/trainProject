@@ -1,3 +1,4 @@
+import { getSkills } from '../../lib/posts';
 const config = {
   composition: 'portal',
   pageTitle: 'Portal'
@@ -8,9 +9,11 @@ export default function Portal({ }: any) {
 }
 
 export async function getStaticProps() {
+  const skills = await getSkills();
   return {
     props: {
-      ...config
+      ...config,
+      ...skills
     }
   }
 }
