@@ -4,7 +4,7 @@ const config = {
 }
 
 export default function Portal({ }: any) {
-  return;
+  return <>Index</>;
 }
 
 export async function getStaticProps() {
