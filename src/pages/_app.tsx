@@ -8,9 +8,16 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import { Analytics } from '@vercel/analytics/react'
 
 import { BlogLayout, Portal } from '../componets/index'
+import { useEffect } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pageTitle = 'undefined', composition = 'index', ...restProps } = pageProps;
+  console.log('_app');
+  useEffect(() => {
+    return () => {
+      console.log('_app unmount')
+    }
+  }, [])
   return (
     <>
       <Head>
