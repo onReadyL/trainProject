@@ -12,12 +12,6 @@ import { useEffect } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const { pageTitle = 'undefined', composition = 'index', ...restProps } = pageProps;
-  console.log('_app');
-  useEffect(() => {
-    return () => {
-      console.log('_app unmount')
-    }
-  }, [])
   return (
     <>
       <Head>
