@@ -27,6 +27,7 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@vercel/analytics": "^1.0.1",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.1",
     "eslint-plugin-prettier": "^4.2.1",

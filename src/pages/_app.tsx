@@ -5,6 +5,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
+import { Analytics } from '@vercel/analytics/react'
 
 import { BlogLayout, Portal } from '../componets/index'
 
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </BlogLayout>
         )}
       </ConfigProvider>
+      <Analytics />
     </>
   )
 }
