@@ -9,6 +9,14 @@
     height: 100%;
     .flex
 }
+.boxShadow(@x:0,@y:0,@blur:1px,@color:#000){
+    box-shadow: @arguments;
+}
+
+.card{
+   .boxShadow(4px, 2px, 13px, var(--primary-color))
+}
+
 .tag{
     font-size: 80%;
     margin-top: 6px;

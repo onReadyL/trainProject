@@ -14,6 +14,7 @@ const Index = ({ children, skills }: any) => {
         <Layout className={styles.layout}>
             <Card
                 style={{ width: 400 }}
+                className={styles.card}
                 cover={
                     <img
                         style={{ backgroundColor: '#2db7f5' }}
