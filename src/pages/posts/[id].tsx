@@ -36,11 +36,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths = getAllPostIds();
     return {
         paths,
-        fallback: true, // 开启之后，请求未静态生成的页面，会在服务端再执行getStaticProps
+        fallback: false, // 开启之后，请求未静态生成的页面，会在服务端再执行getStaticProps
     };
 }
 
-export const getStaticProps = async ({ params }: { params?: { [key: string]: string }}) => {
+export const getStaticProps = async ({ params }: { params: { [key: string]: string }}) => {
     const postData = await getPostData(params?.id);
     // 此方案开发环境太卡
     if (postData.status === 404) {

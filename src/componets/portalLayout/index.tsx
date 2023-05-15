@@ -4,9 +4,13 @@ import { Layout, Avatar, Tag, Card } from 'antd';
 import Icon from '@ant-design/icons';
 
 import styles from './index.module.less';
+import { useEffect } from 'react';
 
 const Index = ({ children, skills }: any) => {
     const router = useRouter();
+    useEffect(() => {
+        router.prefetch('/blog')
+    }, [])
     const linkTo = () => {
         router.push('/blog');
     }
