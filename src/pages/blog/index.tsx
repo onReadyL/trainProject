@@ -64,7 +64,7 @@ export default function Blog({ }: any) {
                 <List.Item.Meta
                   title={(<div className={styles.listItemTitle}><Link href={`/posts/${id}`} legacyBehavior>
                     <a className={styles.title}>{title}</a>
-                  </Link><span className={styles.point}></span><span className={styles.classify}>{classify}</span></div>)}
+                  </Link><span className={styles.point}></span><span className={styles.classify}>{classify || '未分类'}</span></div>)}
                   description={date}
                 />
               </List.Item>
