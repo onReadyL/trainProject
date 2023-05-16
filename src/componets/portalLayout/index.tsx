@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Layout, Avatar, Tag, Card } from 'antd';
-import Icon from '@ant-design/icons';
+import Icon, { GithubOutlined } from '@ant-design/icons';
 
 import styles from './index.module.less';
 import { useEffect } from 'react';
@@ -31,12 +31,20 @@ const Index = ({ children, skills }: any) => {
                         onClick={linkTo}
                         title='博客'
                         component={() => {
-                            return <Image src='images/blog.svg' alt='博客' width={16} height={16}/>
+                            return <Image src='images/blog.svg' alt='博客' width={16} height={16} />
                         }} />,
+                    <Icon
+                        onClick={() => {
+                            window.open('https://github.com/onReadyL/trainProjectForNext', '_blank')
+                        }}
+                        title='博客'
+                        component={() => {
+                            return <Image src='images/github-fill.svg' alt='Github' width={16} height={16} />
+                        }} />
                 ]}
             >
                 <Card.Meta
-                    style={{ display: 'felx', alignItems: 'center'}}
+                    style={{ display: 'felx', alignItems: 'center' }}
                     avatar={<Avatar style={{ width: 60, height: 60 }} alt='头像' size='large' src="/images/iHaveGotIt.jpg" />}
                     description={
                         <>
