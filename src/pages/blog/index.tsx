@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { List, Skeleton, Divider } from 'antd';
+import { List, Skeleton, Divider, Spin } from 'antd';
+
 import { getBlogLost } from '../../componets/fetch/index';
+import styles from './index.module.less';
 
 const config = {
   composition: 'blog',
@@ -11,6 +13,11 @@ const config = {
 
 export default function Blog({ }: any) {
   const [allPostsData, setAllPostsData] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
+  const isFirstLoad = useRef(true);
+
   const [pageInfo, setPageInfo] = useState({
     page: 1,
     pageSize: 20,
@@ -18,7 +25,12 @@ export default function Blog({ }: any) {
   })
 
   const getBlogList = useCallback(() => {
+    if (isFirstLoad.current) {
+      setLoading(true);
+    }
     getBlogLost({ page: 1, pageSize: 10 }).then((res) => {
+      isFirstLoad.current = false;
+      setLoading(false);
       const { total } = res;
       setPageInfo((prev) => ({ ...prev, total }))
       setAllPostsData(res.list);
@@ -32,37 +44,34 @@ export default function Blog({ }: any) {
   return (
     <div
       id="scrollableDiv"
-      style={{
-        height: 400,
-        overflow: 'auto',
-        padding: '0 16px',
-        border: '1px solid rgba(140, 140, 140, 0.35)',
-      }}
+      className={styles.root}
     >
-      <InfiniteScroll
-        dataLength={allPostsData.length}
-        next={() => {
-          debugger
-        }}
-        hasMore={allPostsData.length < pageInfo.total}
-        loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-        endMessage={<Divider plain>It is all</Divider>}
-        scrollableTarget="scrollableDiv"
-      >
-        <List
-          dataSource={allPostsData}
-          renderItem={(item: any) => (
-            <List.Item key={item.email}>
-              <List.Item.Meta
+      <Spin spinning={loading}>
+        <InfiniteScroll
+          dataLength={allPostsData.length}
+          next={() => {
+            debugger
+          }}
+          hasMore={allPostsData.length < pageInfo.total}
+          loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
+          endMessage={<Divider plain>It is all</Divider>}
+          scrollableTarget="scrollableDiv"
+        >
+          <List
+            dataSource={allPostsData}
+            renderItem={(item: any) => (
+              <List.Item key={item.email} className={styles.listItem}>
+                <List.Item.Meta
                   title={<Link href={`/posts/${item.id}`} legacyBehavior>
-                    <a>{item.title}</a>
+                    <a className={styles.title}>{item.title}</a>
                   </Link>}
                   description={item.date}
                 />
-            </List.Item>
-          )}
-        />
-      </InfiniteScroll>
+              </List.Item>
+            )}
+          />
+        </InfiniteScroll>
+      </Spin>
     </div>
   );
 }
