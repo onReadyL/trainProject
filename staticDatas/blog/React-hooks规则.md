@@ -1,6 +1,7 @@
 ---
 title: 'React Hook为什么不能写在条件语句里'
 date: '2021-07-15'
+classify: 'react-hook'
 ---
 ## React Hook 规则：
 

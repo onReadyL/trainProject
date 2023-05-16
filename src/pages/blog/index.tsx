@@ -59,13 +59,13 @@ export default function Blog({ }: any) {
         >
           <List
             dataSource={allPostsData}
-            renderItem={(item: any) => (
-              <List.Item key={item.email} className={styles.listItem}>
+            renderItem={({ id, title, date, classify }: any) => (
+              <List.Item key={id} className={styles.listItem}>
                 <List.Item.Meta
-                  title={<Link href={`/posts/${item.id}`} legacyBehavior>
-                    <a className={styles.title}>{item.title}</a>
-                  </Link>}
-                  description={item.date}
+                  title={(<div className={styles.listItemTitle}><Link href={`/posts/${id}`} legacyBehavior>
+                    <a className={styles.title}>{title}</a>
+                  </Link><span className={styles.point}></span><span className={styles.classify}>{classify}</span></div>)}
+                  description={date}
                 />
               </List.Item>
             )}

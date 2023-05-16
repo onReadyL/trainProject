@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './index.module.scss';
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 
 const { Sider, Content, Footer, Header } = Layout;
 export default function Index({ children }: any) {
