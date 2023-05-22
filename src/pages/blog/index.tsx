@@ -54,7 +54,7 @@ export default function Blog({ }: any) {
           }}
           hasMore={allPostsData.length < pageInfo.total}
           loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-          endMessage={<Divider plain>It is all</Divider>}
+         
           scrollableTarget="scrollableDiv"
         >
           <List

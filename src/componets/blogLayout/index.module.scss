@@ -1,31 +1,16 @@
 .layout{
   width: 100%;
-  padding: 10px 10px 0px;
 }
-.container {
-    max-width: 36rem;
-    padding: 0 1rem;
-    margin: 3rem auto 6rem;
-  }
-  
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .headerImage {
-    width: 6rem;
-    height: 6rem;
-  }
-  
-  .headerHomeImage {
-    width: 8rem;
-    height: 8rem;
-  }
-  
-  .backToHome {
-    display: flex;
-    justify-content: flex-end;
-    margin: 3rem 0 0;
-  }
+.header{
+  position: sticky;
+  top: 0;
+}
+.content{
+  padding: 12px;
+}
+
+.backToHome {
+  display: flex;
+  justify-content: flex-end;
+  margin: 3rem 0 0;
+}

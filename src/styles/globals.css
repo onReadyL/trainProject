@@ -88,6 +88,23 @@ a {
   text-decoration: none;
 }
 
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
