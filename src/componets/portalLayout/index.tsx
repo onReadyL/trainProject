@@ -37,7 +37,7 @@ const Index = ({ children, skills }: any) => {
                         onClick={() => {
                             window.open('https://github.com/onReadyL/trainProjectForNext', '_blank')
                         }}
-                        title='博客'
+                        title='github'
                         component={() => {
                             return <Image src='images/github-fill.svg' alt='Github' width={16} height={16} />
                         }} />
