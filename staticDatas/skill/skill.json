@@ -34,5 +34,13 @@
     {
         "skill": "Jest",
         "bgColor": "blue"
-    }
+    },
+    {
+        "skill": "Redux-Saga",
+        "bgColor": "magenta"
+    },
+    {
+        "skill": "Koa",
+        "bgColor": "red"
+    },
 ]
